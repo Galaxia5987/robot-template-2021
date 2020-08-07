@@ -19,7 +19,7 @@ public class Drivetrain extends SubsystemBase {
     UnitModel unitModel = new UnitModel(Constants.Drivetrain.TICKS_TO_METER);
 
 
-    public Drivetrain(){
+    public Drivetrain() {
         motorLeftBack.follow(motorLeftFront);
         motorRightBack.follow(motorRightFront);
 
@@ -33,12 +33,32 @@ public class Drivetrain extends SubsystemBase {
         motorLeftFront.config_kI(0, Constants.Drivetrain.PIDF[1]);
         motorLeftFront.config_kD(0, Constants.Drivetrain.PIDF[2]);
         motorLeftFront.config_kF(0, Constants.Drivetrain.PIDF[3]);
-        
+
         motorRightFront.config_kP(0, Constants.Drivetrain.PIDF[0]);
         motorRightFront.config_kI(0, Constants.Drivetrain.PIDF[1]);
         motorRightFront.config_kD(0, Constants.Drivetrain.PIDF[2]);
         motorRightFront.config_kF(0, Constants.Drivetrain.PIDF[3]);
     }
+
+
+    /**
+     * This method returns the distance that the left side of the robot did.
+     *
+     * @return distance of the left side. [m]
+     */
+    public double getLeftDistance() {
+        return unitModel.toUnits(motorLeftFront.getSelectedSensorPosition());
+    }
+
+    /**
+     * This method returns the distance that the right side of the robot did.
+     *
+     * @return distance of the right side. [m]
+     */
+    public double getRightDistance() {
+        return unitModel.toUnits(motorRightFront.getSelectedSensorPosition());
+    }
+
 
     @Override
     public void periodic() {

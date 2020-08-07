@@ -19,6 +19,7 @@ public final class Constants {
 
     public static class Drivetrain{
         public static final int TICKS_TO_METER = 1;
+        public static final double[] PIDF = {0,0,0,0};
     }
 
 

@@ -1,5 +1,6 @@
 package frc.robot.subsystems.drivetrain;
 
+import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonFX;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
@@ -59,6 +60,22 @@ public class Drivetrain extends SubsystemBase {
         return unitModel.toUnits(motorRightFront.getSelectedSensorPosition());
     }
 
+    /**
+     * Move the drivetrain certain distance.
+     * @param distance the distance that the robot drive. [m]
+     */
+    public void setLeftDistance(double distance){
+        motorLeftFront.set(ControlMode.Position, unitModel.toTicks(distance));
+    }
+
+    /**
+     * Move the drivetrain certain distance.
+     * @param distance the distance that the robot drive. [m]
+     */
+    public void setRightDistance(double distance){
+        motorRightFront.set(ControlMode.Position, unitModel.toTicks(distance));
+    }
+    
 
     @Override
     public void periodic() {

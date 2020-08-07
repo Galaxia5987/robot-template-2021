@@ -75,7 +75,19 @@ public class Drivetrain extends SubsystemBase {
     public void setRightDistance(double distance){
         motorRightFront.set(ControlMode.Position, unitModel.toTicks(distance));
     }
-    
+
+    /**
+     * This method gives power to the motors.
+     *
+     * 
+     * @param leftInput the power to give to the left motor. [-1:1]
+     * @param rightInput the power to give to the right motor. [-1:1]
+     */
+    public void setPower(double leftInput, double rightInput){
+        motorLeftFront.set(ControlMode.PercentOutput, leftInput);
+        motorRightFront.set(ControlMode.PercentOutput, rightInput);
+    }
+
 
     @Override
     public void periodic() {

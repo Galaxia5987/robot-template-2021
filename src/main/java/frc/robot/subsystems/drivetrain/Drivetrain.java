@@ -29,6 +29,15 @@ public class Drivetrain extends SubsystemBase {
         motorRightFront.setInverted(Ports.Drivetrain.RIGHT_INVERTED);
         motorRightBack.setInverted(Ports.Drivetrain.RIGHT_INVERTED);
 
+        motorLeftFront.config_kP(0, Constants.Drivetrain.PIDF[0]);
+        motorLeftFront.config_kI(0, Constants.Drivetrain.PIDF[1]);
+        motorLeftFront.config_kD(0, Constants.Drivetrain.PIDF[2]);
+        motorLeftFront.config_kF(0, Constants.Drivetrain.PIDF[3]);
+        
+        motorRightFront.config_kP(0, Constants.Drivetrain.PIDF[0]);
+        motorRightFront.config_kI(0, Constants.Drivetrain.PIDF[1]);
+        motorRightFront.config_kD(0, Constants.Drivetrain.PIDF[2]);
+        motorRightFront.config_kF(0, Constants.Drivetrain.PIDF[3]);
     }
 
     @Override

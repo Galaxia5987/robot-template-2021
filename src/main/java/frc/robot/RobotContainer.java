@@ -8,6 +8,7 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.GenericHID;
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
@@ -22,17 +23,19 @@ import frc.robot.subsystems.drivetrain.Drivetrain;
  */
 public class RobotContainer {
   public Drivetrain drivetrain = new Drivetrain();
-  public XboxController Xbox = new XboxController(1);
-  public JoystickButton a = new JoystickButton(Xbox, XboxController.Button.kA.value);
-  public JoystickButton b = new JoystickButton(Xbox, XboxController.Button.kB.value);
+  public static XboxController xbox = new XboxController(2);
+  public JoystickButton a = new JoystickButton(xbox, XboxController.Button.kA.value);
+  public JoystickButton b = new JoystickButton(xbox, XboxController.Button.kB.value);
   // The robot's subsystems and commands are defined here...
-
+  public static Joystick left = new Joystick(0);
+  public static Joystick right = new Joystick(1);
 
   /**
    * The container for the robot.  Contains subsystems, OI devices, and commands.
    */
   public RobotContainer() {
     // Configure the button bindings
+
     configureButtonBindings();
   }
 
@@ -56,5 +59,31 @@ public class RobotContainer {
 
     // An ExampleCommand will run in autonomous
     return null;
+  }
+
+  public static double getLeftJoystick(){
+    return -left.getY();
+  }
+
+  public static double getRightJoystick(){
+    return -right.getY();
+  }
+
+  public static  double getYLeftXbox(){
+    return -xbox.getRawAxis(XboxController.Axis.kLeftY.value);
+  }
+
+  public static  double getYRightXbox(){
+    return -xbox.getRawAxis(XboxController.Axis.kRightY.value);
+  }
+
+  public static  double getXRightXbox(){
+    return -xbox.getRawAxis(XboxController.Axis.kRightX.value);
+  }
+
+  public static double getXboxRT() { return xbox.getTriggerAxis(GenericHID.Hand.kRight);}
+
+  public static double getXboxLT() {
+    return xbox.getTriggerAxis(GenericHID.Hand.kLeft);
   }
 }

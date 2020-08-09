@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.subsystems.ExampleSubsystem.ExampleSubsystem;
+import frc.robot.subsystems.drivetrain.Commands.driveCommand;
 import frc.robot.subsystems.drivetrain.Drivetrain;
 
 /**
@@ -35,7 +36,7 @@ public class RobotContainer {
    */
   public RobotContainer() {
     // Configure the button bindings
-
+    drivetrain.setDefaultCommand(new driveCommand(1, drivetrain));
     configureButtonBindings();
   }
 
